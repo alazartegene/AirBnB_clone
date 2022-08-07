@@ -1,19 +1,38 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+"""Module test_state.py
+Tests for class State.
+"""
+
+from models.base_model import BaseModel
 from models.state import State
+import unittest
 
 
-class test_state(test_basemodel):
-    """ """
+class TestState(unittest.TestCase):
+    """Tests for class State."""
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "State"
-        self.value = State
+    def setUp(self):
+        pass
 
-    def test_name3(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+    def test_9_1_instatiation(self):
+        """Checks for instances."""
+
+        s = State()
+        self.assertEqual(str(type(s)), "<class 'models.state.State'>")
+        self.assertIsInstance(s, State)
+        self.assertTrue(issubclass(State, BaseModel))
+
+    def test_9_1_class_attr(self):
+        """Checks for class attributes."""
+
+        s = State()
+        self.assertTrue(hasattr(State, "name"))
+
+    def test_9_1_attr(self):
+        """Checks for attributes type."""
+
+        s = State()
+        self.assertTrue(s.name == "")
+
+if __name__ == '__main__':
+    unittest.main()

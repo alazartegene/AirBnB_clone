@@ -1,69 +1,58 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+"""Module test_place.py
+Tests for class Place.
+"""
+
+from models.base_model import BaseModel
 from models.place import Place
+import unittest
 
 
-class test_Place(test_basemodel):
-    """ """
+class TestPlace(unittest.TestCase):
+    """Tests for class Place."""
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "Place"
-        self.value = Place
+    def setUp(self):
+        pass
 
-    def test_city_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.city_id), str)
+    def test_9_5_instatiation(self):
+        """Checks for instatiation."""
 
-    def test_user_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.user_id), str)
+        p = Place()
+        self.assertEqual(str(type(p)), "<class 'models.place.Place'>")
+        self.assertIsInstance(p, Place)
+        self.assertTrue(issubclass(Place, BaseModel))
 
-    def test_name(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+    def test_9_5_class_attr(self):
+        """Checks for class attributes."""
 
-    def test_description(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.description), str)
+        p = Place()
+        self.assertTrue(hasattr(Place, "city_id"))
+        self.assertTrue(hasattr(Place, "user_id"))
+        self.assertTrue(hasattr(Place, "name"))
+        self.assertTrue(hasattr(Place, "description"))
+        self.assertTrue(hasattr(Place, "number_rooms"))
+        self.assertTrue(hasattr(Place, "number_bathrooms"))
+        self.assertTrue(hasattr(Place, "max_guest"))
+        self.assertTrue(hasattr(Place, "price_by_night"))
+        self.assertTrue(hasattr(Place, "latitude"))
+        self.assertTrue(hasattr(Place, "longitude"))
+        self.assertTrue(hasattr(Place, "amenity_ids"))
 
-    def test_number_rooms(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.number_rooms), int)
+    def test_9_5_attr(self):
+        """Checks for attributes type."""
 
-    def test_number_bathrooms(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.number_bathrooms), int)
+        p = Place()
+        self.assertTrue(p.city_id == "")
+        self.assertTrue(p.user_id == "")
+        self.assertTrue(p.name == "")
+        self.assertTrue(p.description == "")
+        self.assertTrue(p.number_rooms == 0)
+        self.assertTrue(p.number_bathrooms == 0)
+        self.assertTrue(p.max_guest == 0)
+        self.assertTrue(p.price_by_night == 0)
+        self.assertTrue(p.latitude == 0.0)
+        self.assertTrue(p.longitude == 0.0)
+        self.assertTrue(p.amenity_ids == [])
 
-    def test_max_guest(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.max_guest), int)
-
-    def test_price_by_night(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.price_by_night), int)
-
-    def test_latitude(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.latitude), float)
-
-    def test_longitude(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.latitude), float)
-
-    def test_amenity_ids(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.amenity_ids), list)
+if __name__ == '__main__':
+    unittest.main()

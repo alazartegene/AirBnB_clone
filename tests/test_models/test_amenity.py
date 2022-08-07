@@ -1,19 +1,38 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+"""Module amenity.py
+Test for class Amenity.
+"""
+
+from models.base_model import BaseModel
 from models.amenity import Amenity
+import unittest
 
 
-class test_Amenity(test_basemodel):
-    """ """
+class TestAmenity(unittest.TestCase):
+    """Tests for class Amenity."""
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "Amenity"
-        self.value = Amenity
+    def setUp(self):
+        pass
 
-    def test_name2(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+    def test_9_3_instatiation(self):
+        """Checks for instances."""
+
+        a = Amenity()
+        self.assertEqual(str(type(a)), "<class 'models.amenity.Amenity'>")
+        self.assertIsInstance(a, Amenity)
+        self.assertTrue(issubclass(Amenity, BaseModel))
+
+    def test_9_3_class_attr(self):
+        """Checks for class attributes."""
+
+        a = Amenity()
+        self.assertTrue(hasattr(Amenity, "name"))
+
+    def test_9_3_attr(self):
+        """Checks for attributes type."""
+
+        a = Amenity()
+        self.assertTrue(a.name == "")
+
+if __name__ == '__main__':
+    unittest.main()
